@@ -1,0 +1,12 @@
+df <- read.csv('edc_second_clean.csv', sep=",", header = TRUE)
+
+my_summary <- as.data.frame(do.call(cbind, lapply(df, summary)))
+
+new_DF <- df[is.na(df$pris),]
+
+plot(df$Boligareal, df$pris, main = 'Pris og M2',
+     xlab = 'Boligareal', ylab = 'Pris')
+abline(lm(df$pris ~ df$Boligareal, data = df), col = "red")
+
+lm(df$pris ~ df$Boligareal, data = df)
+str(df)
